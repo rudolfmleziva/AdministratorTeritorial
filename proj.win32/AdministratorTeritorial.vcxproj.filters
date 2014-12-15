@@ -10,27 +10,49 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SetupScene">
+      <UniqueIdentifier>{92a85926-64d6-4265-88e4-c772cf320bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pugi">
+      <UniqueIdentifier>{3241e30c-b219-4871-8fbd-d0dcbecc09fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Adapt">
+      <UniqueIdentifier>{1161eff7-3ba0-440f-8e78-74845bbd582d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\AppDelegate.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\SetupScene.cpp">
+      <Filter>SetupScene</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\HelloWorldScene.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Extern\pugixml.cpp">
+      <Filter>Pugi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Adapt\Adapt.cpp">
+      <Filter>Adapt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\AppDelegate.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\SetupScene.h">
+      <Filter>SetupScene</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\HelloWorldScene.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Extern\pugiconfig.hpp">
+      <Filter>Pugi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Extern\pugixml.hpp">
+      <Filter>Pugi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Adapt\Adapt.h">
+      <Filter>Adapt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
