@@ -1,10 +1,11 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "SetupScene.h"
+#include "pugixml.hpp"
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
+AppDelegate::AppDelegate() 
+{
 }
 
 AppDelegate::~AppDelegate() 
@@ -26,19 +27,37 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+	pugi::xml_document m_XMLConfiguration;
+	if (FileUtils::getInstance()->isFileExist("Configuration.xml"))
+	{
+		/* Read and check if the configuration file */
+		int a = 3;
+	}
+	else
+	{
+		std::string path = "./Configuration.xml";
+		FILE *fp = fopen(path.c_str(), "w");
+		/*Create the configration file */
+		if (!fp)
+		{
+			CCLOG("can not create file %s", path.c_str());
+		}
+		fclose(fp);
+	}
     if(!glview) {
-        glview = GLViewImpl::create("My Game");
+        glview = GLViewImpl::create("Administrator teritorial");
+		glview->setFrameSize(960, 680);
         director->setOpenGLView(glview);
     }
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = SetupScene::createScene();
 
     // run
     director->runWithScene(scene);
