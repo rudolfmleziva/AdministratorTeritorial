@@ -1,11 +1,18 @@
 #include "AppDelegate.h"
 #include "SetupScene.h"
-#include "pugixml.hpp"
+#include "Adapt.hpp"
+
+extern "C"
+{
+#include "InternalSettings.h"
+#include "CustomDataTypes.h"
+};
 
 USING_NS_CC;
 
 AppDelegate::AppDelegate() 
 {
+	IS_vSetInitialSettingValue();
 }
 
 AppDelegate::~AppDelegate() 
@@ -25,27 +32,28 @@ void AppDelegate::initGLContextAttrs()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
+	Adapt adaptConfiguration;
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-	pugi::xml_document m_XMLConfiguration;
-	if (FileUtils::getInstance()->isFileExist("Configuration.xml"))
+	
+	/* Check if configuration file exist */
+	if (FileUtils::getInstance()->isFileExist(std::string(IS_pchGetConfigurationFileName())))
 	{
 		/* Read and check if the configuration file */
 		int a = 3;
 	}
 	else
 	{
-		std::string path = "./Configuration.xml";
-		FILE *fp = fopen(path.c_str(), "w");
-		/*Create the configration file */
-		if (!fp)
+		/* create the configuration file */
+		if (false == adaptConfiguration.boCreateDefaultXMLFile(IS_pchGetConfigurationFileName()))
 		{
-			CCLOG("can not create file %s", path.c_str());
+			IS_vSetProjectError(true);
 		}
-		fclose(fp);
+		/* Set Setup type */
+		IS_vSetSetupType(TAR_enCleanSetup);
 	}
     if(!glview) {
-        glview = GLViewImpl::create("Administrator teritorial");
+		glview = GLViewImpl::create((IS_vGetSetupType() == TAR_enCleanSetup) ? std::string(IS_pchGetDefaultAppName()) : std::string(IS_pchGetDefaultAppName()));
 		glview->setFrameSize(960, 680);
         director->setOpenGLView(glview);
     }
