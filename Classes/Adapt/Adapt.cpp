@@ -1,5 +1,5 @@
-#include "Adapt.h"
-
+#include "Adapt.hpp"
+#include "pugixml.hpp"
 
 Adapt::Adapt()
 {
@@ -8,4 +8,12 @@ Adapt::Adapt()
 
 Adapt::~Adapt()
 {
+}
+
+/** Create Default XML file */
+bool Adapt::boCreateDefaultXMLFile(const char * path)
+{
+	pugi::xml_document doc;
+	//doc.load("<foo bar='baz'>hey</foo>");
+	return doc.save_file(path);
 }
