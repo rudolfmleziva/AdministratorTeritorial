@@ -53,7 +53,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 		IS_vSetSetupType(TAR_enCleanSetup);
 	}
     if(!glview) {
-		glview = GLViewImpl::create((IS_vGetSetupType() == TAR_enCleanSetup) ? std::string(IS_pchGetDefaultAppName()) : std::string(IS_pchGetDefaultAppName()));
+		glview = GLViewImpl::create((IS_vGetSetupType() == TAR_enCleanSetup || IS_vGetSetupType() == TAR_enNoSettup) ? 
+			std::string(IS_pchGetDefaultAppName()) : std::string(IS_pchGetDefaultAppName()));
 		glview->setFrameSize(960, 680);
         director->setOpenGLView(glview);
     }

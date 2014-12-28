@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Language>
+		<Lang>
+      <Val>Administrator Teritorial</Val>
+      <ID>0</ID>
+    </Lang>
+		<Lang>
+      <Val>Programul a întâmpinat o eroare și nu poate continua execuția!</Val>
+      <ID>1</ID>
+    </Lang>
+    <Lang>
+      <Val>Fișierul Settings.xml nu poate fi creat!</Val>
+      <ID>2</ID>
+    </Lang>
+</Language>

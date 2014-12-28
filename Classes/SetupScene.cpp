@@ -1,6 +1,5 @@
 #include "SetupScene.h"
 
-USING_NS_CC;
 
 Scene* SetupScene::createScene()
 {
@@ -30,11 +29,37 @@ bool SetupScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	auto background = Sprite::create("./Data/Pix/Win32/Background.png");
-	background->setAnchorPoint(Vec2(0, 0));
-	background->setPosition(Vec2(origin.x, origin.y));
+	Background = Sprite::create(
+#ifdef _DEBUG
+		"./Data/Pix/Win32/Background.png"
+#else
+		"../Data/Pix/Win32/Background.png"	
+#endif
+		);
+	Background->setAnchorPoint(Vec2(0, 0));
+	Background->setPosition(Vec2(origin.x, origin.y));
 	// add the sprite as a child to this layer
-	this->addChild(background, 0);
+	this->addChild(Background, 0);
+	
+	NextButton = CCMenuItemImage::create(
+#ifdef _DEBUG
+		"./Data/Pix/Win32/Button-Next.png",
+		"./Data/Pix/Win32/Button-Next.png",
+#else
+		"../Data/Pix/Win32/Button-Next.png",
+		"../Data/Pix/Win32/Button-Next.png",
+#endif
+		CC_CALLBACK_1(SetupScene::menuNextCallback, this));
+	NextButton->setAnchorPoint(Vec2(0, 0));
+	NextButton->setPosition(Vec2(visibleSize.width - visibleSize.width / 4 - NextButton->getContentSize().width / 2,
+		origin.y + visibleSize.width / 2 + NextButton->getContentSize().height / 2));
+	//closeItem->setScale(0.2f)
+
+	// create menu, it's an autorelease object
+	auto menu = Menu::create(NextButton, NULL);
+	menu->setAnchorPoint(Vec2(0, 0));
+	menu->setPosition(Vec2::ZERO);
+	this->addChild(menu, 1);
 
 #if 0
 	// add the sprite as a child to this layer
@@ -95,6 +120,23 @@ bool SetupScene::init()
     return true;
 }
 
+void SetupScene::menuNextCallback(Ref* pSender)
+{
+
+	auto label = Label::createWithTTF("Hello World\nThis is the thing", "./Data/Font/Simsun.ttf", 42);
+
+	// position the label on the center of the screen
+	label->setPosition(Vec2(50, label->getHeight()));
+	int a = label->getCommonLineHeight();
+	label->setAnchorPoint(Vec2(0,0));
+	//label->setTextColor(Color4B(0, 0, 0, 255));
+	//label->enableOutline(Color4B(0, 0, 0, 255),1);
+	//label->enableGlow(Color4B(0, 0, 0, 255)/*,1*/);
+	label->enableOutline(Color4B(0, 0, 0, 255), 1);
+	
+	// add the label as a child to this layer
+	this->addChild(label, 2);
+}
 #if 0
 void SetupScene::menuCloseCallback(Ref* pSender)
 {
