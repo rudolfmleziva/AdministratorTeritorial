@@ -2,6 +2,7 @@
 #define __SETUP_SCENE_H__
 
 #include "cocos2d.h"
+#include "CustomDataTypes.h"
 
 
 USING_NS_CC;
@@ -23,8 +24,16 @@ public:
 	CREATE_FUNC(SetupScene);
 
 private:
+	/* curent setup step */
+	int SetupStep;
+	/*background image*/
 	Sprite * Background;
+	/*next step button*/
 	MenuItemImage * NextButton;
+	/*step inactive images*/
+	Sprite * StepInactive[NumberOfSettupSteps];
+
+	Sprite * StepActive;
 };
 
 #endif // __SETUP_SCENE_H__

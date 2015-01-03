@@ -35,7 +35,7 @@
     <ClCompile Include="..\Classes\Adapt\Adapt.cpp">
       <Filter>Adapt</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Adapt\InternalSettings.c">
+    <ClCompile Include="..\Classes\Adapt\InternalSettings.cpp">
       <Filter>Adapt</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,10 +57,10 @@
     <ClInclude Include="..\Classes\Adapt\Adapt.hpp">
       <Filter>Adapt</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Adapt\InternalSettings.h">
+    <ClInclude Include="..\Classes\Adapt\CustomDataTypes.h">
       <Filter>Adapt</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Adapt\CustomDataTypes.h">
+    <ClInclude Include="..\Classes\Adapt\InternalSettings.hpp">
       <Filter>Adapt</Filter>
     </ClInclude>
   </ItemGroup>

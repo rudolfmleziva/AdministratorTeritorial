@@ -138,7 +138,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\Adapt\Adapt.cpp" />
-    <ClCompile Include="..\Classes\Adapt\InternalSettings.c" />
+    <ClCompile Include="..\Classes\Adapt\InternalSettings.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\SetupScene.cpp" />
@@ -148,7 +148,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   <ItemGroup>
     <ClInclude Include="..\Classes\Adapt\Adapt.hpp" />
     <ClInclude Include="..\Classes\Adapt\CustomDataTypes.h" />
-    <ClInclude Include="..\Classes\Adapt\InternalSettings.h" />
+    <ClInclude Include="..\Classes\Adapt\InternalSettings.hpp" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\SetupScene.h" />

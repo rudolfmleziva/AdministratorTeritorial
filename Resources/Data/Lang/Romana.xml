@@ -1,15 +1,19 @@
 <?xml version="1.0"?>
 <Language>
-		<Lang>
-      <Val>Administrator Teritorial</Val>
-      <ID>0</ID>
-    </Lang>
-		<Lang>
-      <Val>Programul a întâmpinat o eroare și nu poate continua execuția!</Val>
-      <ID>1</ID>
-    </Lang>
-    <Lang>
-      <Val>Fișierul Settings.xml nu poate fi creat!</Val>
-      <ID>2</ID>
-    </Lang>
+	<Text ID="0" Val="Administrator Teritorial" />
+	<Text ID="1" Val="Programul a întâmpinat o eroare și nu poate continua execuția!" />
+    <Text ID="2" Val="Fișierul Configuration.xml nu poate fi creat!" />
+	<Text ID="3" Val="Ne bucurăm că ați ales să folosiți
+	  acest program de administrare teritorială!
+	  
+	  
+	  În continuare sunt necesare câteva configurări." />
+	<Text ID="4" Val="SELECTAȚI LIMBA DORITĂ" />
+	<Text ID="5" Val="INTRODUCEȚI DATELE PERSONALE" />
+	<Text ID="6" Val="Nume:"/>
+	<Text ID="7" Val="Prenume:"/>
+	<Text ID="8" Val="Data Nașterii:"/>
+	<Text ID="9" Val="Responsabilitate în congregație:"/>
+	<Text ID="10" Val="Adresă de email:"/>
+	<Text ID="11" Val="Număr contact":/>
 </Language>

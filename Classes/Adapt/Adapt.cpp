@@ -14,6 +14,5 @@ Adapt::~Adapt()
 bool Adapt::boCreateDefaultXMLFile(const char * path)
 {
 	pugi::xml_document doc;
-	//doc.load("<foo bar='baz'>hey</foo>");
 	return doc.save_file(path);
 }

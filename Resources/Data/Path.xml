@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Configuration>
+	<Languages>
+		<Language ID="0" Path="./Lang/English.xml" Val="English" />
+		<Language ID="1" Path="./Lang/Romana.xml" Val="Română"  />
+	</Languages>
+</Configuration>

@@ -1,18 +1,19 @@
 #include "AppDelegate.h"
 #include "SetupScene.h"
 #include "Adapt.hpp"
+#include "InternalSettings.hpp"
 
 extern "C"
 {
-#include "InternalSettings.h"
 #include "CustomDataTypes.h"
 };
 
 USING_NS_CC;
 
+
 AppDelegate::AppDelegate() 
 {
-	IS_vSetInitialSettingValue();
+	InternalSettings::Instance()->IS_vSetInitialSettingValue();
 }
 
 AppDelegate::~AppDelegate() 
@@ -37,7 +38,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
 	
 	/* Check if configuration file exist */
-	if (FileUtils::getInstance()->isFileExist(std::string(IS_pchGetConfigurationFileName())))
+	if (FileUtils::getInstance()->isFileExist(InternalSettings::Instance()->IS_sGetConfigurationFileName()))
 	{
 		/* Read and check if the configuration file */
 		int a = 3;
@@ -45,16 +46,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	else
 	{
 		/* create the configuration file */
-		if (false == adaptConfiguration.boCreateDefaultXMLFile(IS_pchGetConfigurationFileName()))
+		if (false == adaptConfiguration.boCreateDefaultXMLFile(InternalSettings::Instance()->IS_sGetConfigurationFileName().c_str()))
 		{
-			IS_vSetProjectError(true);
+			InternalSettings::Instance()->IS_vSetProjectError(true);
 		}
 		/* Set Setup type */
-		IS_vSetSetupType(TAR_enCleanSetup);
+		InternalSettings::Instance()->IS_vSetSetupType(TAR_enCleanSetup);
 	}
     if(!glview) {
-		glview = GLViewImpl::create((IS_vGetSetupType() == TAR_enCleanSetup || IS_vGetSetupType() == TAR_enNoSettup) ? 
-			std::string(IS_pchGetDefaultAppName()) : std::string(IS_pchGetDefaultAppName()));
+		glview = GLViewImpl::create((InternalSettings::Instance()->IS_vGetSetupType() == TAR_enCleanSetup || InternalSettings::Instance()->IS_vGetSetupType() == TAR_enNoSettup) ?
+			InternalSettings::Instance()->IS_sGetDefaultAppName() : InternalSettings::Instance()->IS_sGetDefaultAppName());
 		glview->setFrameSize(960, 680);
         director->setOpenGLView(glview);
     }

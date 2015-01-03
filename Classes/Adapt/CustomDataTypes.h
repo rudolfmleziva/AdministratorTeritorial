@@ -5,6 +5,7 @@
 /** The scope of the object is to define neccessary Data types 
 */
 
+#define NumberOfSettupSteps 3
 
 /** The enum defines Setup types */
 enum TAR_enSetupType
