@@ -18,6 +18,11 @@ TAR_tenSetupType InternalSettings::SettupType = TAR_enNoSettup;
 /* Error type */
 TAR_tenErrorType InternalSettings::ErrorType = TAR_enNoError;
 
+vector<IS_tstLanguagesConfig> InternalSettings::Languages(MaxNumberOfLanguages);
+
+/* Number of avalable languages */
+unsigned int InternalSettings::NumberOfAvailableLanguages = 0;
+
 /** This function is called to create an instance of the class.
 Calling the constructor publicly is not allowed. The constructor
 is private and is only called by this Instance function.
@@ -56,6 +61,12 @@ void InternalSettings::IS_vSetInitialSettingValue(void)
 	ProjectError = false;
 	SettupType = TAR_enNoSettup;
 	ErrorType = TAR_enNoError;
+	for (int cnt = 0; cnt < MaxNumberOfLanguages; cnt++)
+	{
+		Languages[cnt].Language = L"";
+		Languages[cnt].Path = "";
+	}
+	NumberOfAvailableLanguages = 0;
 }
 
 /** Get settup type */
@@ -77,3 +88,51 @@ const string  InternalSettings::IS_sGetDefaultAppName(void)
 	return DefaultAppName;
 }
 
+const string InternalSettings::IS_sGetPathsName(void)
+{
+	return PathnFileName;
+}
+
+void InternalSettings::IS_vSetLanguageConfiguration(unsigned int LanguageIndex, wstring Language, string Path)
+{
+	if (LanguageIndex < MaxNumberOfLanguages)
+	{
+		Languages[LanguageIndex].Language = Language;
+		Languages[LanguageIndex].Path = Path;
+	}
+}
+
+/* Get Language Name */
+const wstring InternalSettings::IS_sGetLanguageName(unsigned int LanguageIndex)
+{
+	wstring result = L"";
+	if (LanguageIndex < NumberOfAvailableLanguages)
+	{
+		result = Languages[LanguageIndex].Language;
+	}
+	return result;
+}
+
+/* Get Language texts Path */
+const string InternalSettings::IS_sGetLanguagePath(unsigned int LanguageIndex)
+{
+	string result = "";
+	if (LanguageIndex < NumberOfAvailableLanguages)
+	{
+		result = Languages[LanguageIndex].Path;
+	}
+	return result;
+}
+
+/* Set Number of available languages */
+void InternalSettings::IS_vSetNumberOfAvailableLanguages(unsigned int LanguageNumber)
+{
+	if (LanguageNumber < MaxNumberOfLanguages)
+	{
+		NumberOfAvailableLanguages = LanguageNumber;
+	}
+	else
+	{
+		NumberOfAvailableLanguages = MaxNumberOfLanguages;
+	}
+}

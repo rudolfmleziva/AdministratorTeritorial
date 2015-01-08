@@ -37,11 +37,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
 	
+	adaptConfiguration.vReadAvailableLanguages(InternalSettings::Instance()->IS_sGetPathsName().c_str());
 	/* Check if configuration file exist */
 	if (FileUtils::getInstance()->isFileExist(InternalSettings::Instance()->IS_sGetConfigurationFileName()))
 	{
 		/* Read and check if the configuration file */
-		int a = 3;
+		int a = 3;		
 	}
 	else
 	{

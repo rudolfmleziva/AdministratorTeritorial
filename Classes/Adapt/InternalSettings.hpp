@@ -2,6 +2,7 @@
 #define __INTERNAL_SETTINGS_H__
 /*Standard inclussion*/
 #include <string>
+#include <vector>
 
 /* Project inclusions */
 #include "CustomDataTypes.h"
@@ -10,6 +11,13 @@ using namespace std;
 /** The scope of the object is to hold project configuration
 * during runtime
 */
+struct stLanguagesConfig
+{
+	wstring Language;
+	string Path;
+};
+
+typedef struct stLanguagesConfig IS_tstLanguagesConfig;
 
 class InternalSettings
 {
@@ -40,6 +48,22 @@ public:
 	*/
 	const string IS_sGetDefaultAppName(void);
 
+	/** Get Default App Name
+	*/
+	const string IS_sGetPathsName(void);
+
+	/* Set Languages Configuration */
+	void IS_vSetLanguageConfiguration(unsigned int LanguageIndex, wstring Language, string Path);
+
+	/* Get Language Name */
+	const wstring IS_sGetLanguageName(unsigned int LanguageIndex);
+
+	/* Get Language texts Path */
+	const string IS_sGetLanguagePath(unsigned int LanguageIndex);
+
+	/* Set Number of available languages */
+	void IS_vSetNumberOfAvailableLanguages(unsigned int LanguageNumber);
+
 private:
 	InternalSettings(){};  // Private so that it can  not be called
 	InternalSettings(InternalSettings const&){};             // copy constructor is private
@@ -63,6 +87,12 @@ private:
 
 	/* Link to path file */
 	static const string PathnFileName;
+	
+	/* Languages Configuration */
+	static vector<IS_tstLanguagesConfig> Languages;
+
+	/* Number of avalable languages */
+	static unsigned int NumberOfAvailableLanguages;
 };
 
 #endif // __INTERNAL_SETTINGS_H__
